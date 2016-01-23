@@ -4,10 +4,10 @@ routes.$inject = ['$stateProvider'];
 
 export default function routes($stateProvider) {
   $stateProvider
-    .state('home', {
+    .state('users', {
       url: '/',
-      template: require('./dashboard.html'),
-      controller: 'HomeController',
-      controllerAs: 'home'
+      template: require('./user.html'),
+      controller: 'UserController',
+      controllerAs: 'user'
     });
 }

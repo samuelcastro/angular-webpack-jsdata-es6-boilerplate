@@ -16,6 +16,9 @@ import jsData from 'js-data';
 import jsDataFirebase from 'js-data-firebase';
 import jsDataAngular from 'js-data-angular'
 
+import users from './modules/users/index';
+import posts from './modules/posts/index';
+import comments from './modules/comments/index';
 import dashboard from './modules/dashboard/index';
 
 import adapters from './app.adapters.config';
@@ -23,7 +26,7 @@ import provider from './app.provider.config';
 import run from './app.run.config';
 import routing from './app.routing.config';
 
-angular.module('app', [uirouter, jsDataAngular, dashboard, login, models])
+angular.module('app', [uirouter, jsDataAngular, users, posts, comments, dashboard])
     .provider('DSFirebaseAdapter', provider)
     .config(adapters)
     .config(routing)

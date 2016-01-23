@@ -5,12 +5,11 @@ import uirouter from 'angular-ui-router';
 
 import './style.css';
 
-import routing from './dashboard.routes';
-import HomeController from './dashboard.controller';
-import wordsService from '../../services/words.service';
-import authService from '../../services/auth.service';
+import routing from './post.routes';
+import postController from './post.controller';
+import postModel from './post.model';
 
-export default angular.module('app.home', [uirouter, wordsService, authService])
+export default angular.module('app.post', [uirouter, postModel])
   .config(routing)
-  .controller('HomeController', HomeController)
+  .controller('PostController', postController)
   .name;

@@ -1,16 +1,9 @@
 'use strict';
 
-class HomeController {
-  constructor($scope, words, auth, User) {
+class UserController {
+  constructor($scope, User) {
     this.$scope = $scope;
-    this.wordsSvc = words;
-    this.authSvc = auth;
     this.User = User.getInstance();
-    this.isAuth = this.authSvc.isAuth();
-
-    if (this.isAuth) {
-      this.user = this.authSvc.getUser();
-    }
 
     this.User.findAll().then(
         users => {
@@ -65,6 +58,6 @@ class HomeController {
   }
 }
 
-HomeController.$inject = ['$scope', 'words', 'auth', 'User'];
+UserController.$inject = ['$scope', 'User'];
 
-export default HomeController
+export default UserController
