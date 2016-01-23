@@ -13,7 +13,5 @@ export default function run(DS, DSFirebaseAdapter) {
     /**
      * Every thing ok, let's set our adapter as default
      */
-    if(DS.adapters.firebase === DSFirebaseAdapter) {
-        DS.registerAdapter('firebase', DSFirebaseAdapter, { default: true });
-    }
+    DS.registerAdapter('firebase', DSFirebaseAdapter, { default: true });
 }

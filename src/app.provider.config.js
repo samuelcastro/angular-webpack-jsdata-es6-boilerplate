@@ -11,7 +11,7 @@
 import jsDataFirebase from 'js-data-firebase';
 
 export default function () {
-  this.defaults = {}
+  this.defaults = {};
   this.$get = () => new jsDataFirebase(this.defaults)
 };
 

@@ -1,5 +1,5 @@
 <div class="jumbotron centered">
-  <h1>{{ home.getTitle() }}</h1>
+  <h1>Dashboard</h1>
 
   <table class="table table-striped">
     <thead>
@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr data-ng-repeat="user in home.users">
+    <tr data-ng-repeat="user in dashboard.users">
       <th scope="row">{{ $index + 1 }}</th>
       <td>{{ user.name }}</td>
       <td>{{ user.last_name }}</td>
@@ -20,7 +20,7 @@
     </tbody>
   </table>
 
-  <div class="sk-fading-circle" data-ng-if="home.users.length === 0">
+  <div class="sk-fading-circle" data-ng-if="dashboard.users.length === 0">
     <div class="sk-circle1 sk-circle"></div>
     <div class="sk-circle2 sk-circle"></div>
     <div class="sk-circle3 sk-circle"></div>
@@ -34,20 +34,4 @@
     <div class="sk-circle11 sk-circle"></div>
     <div class="sk-circle12 sk-circle"></div>
   </div>
-
-  <p><a class="btn btn-primary" role="button" ng-click="home.getRandomWord()">Give me a word!</a></p>
-  <div ng-if="home.word">
-    <pre>Word: {{home.word.german}}</pre>
-    <pre ng-if="home.isAuth">Translation: {{home.word.english}}</pre>
-    <p ng-if="!home.isAuth">Please login below to see the translation</p>
-  </div>
-</div>
-<div ng-if="home.isAuth">
-  <p>Welcome back {{home.user.username}}</p>
-  <a href="#" ng-click="home.logout($event)">Logout</a>
-</div>
-<a data-ng-click="home.addUser();">Add User</a>
-<a data-ng-click="home.findAll();">Find All</a>
-<div ng-if="!home.isAuth">
-  <a ui-sref="login">Login</a>
 </div>

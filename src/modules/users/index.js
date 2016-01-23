@@ -11,5 +11,5 @@ import userModel from './user.model';
 
 export default angular.module('app.user', [uirouter, userModel])
   .config(routing)
-  .controller('HomeController', userController)
+  .controller('UsersController', userController)
   .name;

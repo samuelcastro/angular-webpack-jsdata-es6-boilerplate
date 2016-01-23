@@ -5,7 +5,7 @@ routes.$inject = ['$stateProvider'];
 export default function routes($stateProvider) {
   $stateProvider
     .state('users', {
-      url: '/',
+      url: '/usersxx',
       template: require('./user.html'),
       controller: 'UserController',
       controllerAs: 'user'

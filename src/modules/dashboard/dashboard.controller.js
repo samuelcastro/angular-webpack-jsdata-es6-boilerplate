@@ -1,24 +1,13 @@
 'use strict';
 
 class DashboardController {
-  constructor($scope, words, auth, User) {
+  constructor($scope, User) {
     this.$scope = $scope;
-    this.wordsSvc = words;
-    this.authSvc = auth;
     this.User = User.getInstance();
-    this.isAuth = this.authSvc.isAuth();
 
-    if (this.isAuth) {
-      this.user = this.authSvc.getUser();
-    }
+    this.findAll();
 
-    this.User.findAll().then(
-        users => {
-          console.log(users);
-        }
-    )
-
-    this.User.bindAll({}, this.$scope, 'home.users');
+    this.User.bindAll({}, this.$scope, 'dashboard.users');
   }
 
   getTitle() {
@@ -46,7 +35,7 @@ class DashboardController {
   findAll() {
     this.User.findAll().then(
         users => {
-          alert(JSON.stringify(users));
+
         }
     )
   }
@@ -65,6 +54,6 @@ class DashboardController {
   }
 }
 
-DashboardController.$inject = ['$scope', 'words', 'auth', 'User'];
+DashboardController.$inject = ['$scope', 'User'];
 
 export default DashboardController
