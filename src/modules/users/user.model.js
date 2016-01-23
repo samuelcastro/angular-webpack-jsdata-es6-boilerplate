@@ -72,6 +72,6 @@ class User {
 User.$inject = ['$rootScope', 'DS', 'DSHttpAdapter', '$q'];
 
 export default angular.module('app.user.model', [])
-    .run(function (User) {})
+    .run(User => {})
     .service('User', User)
     .name;

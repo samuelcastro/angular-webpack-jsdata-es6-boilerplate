@@ -42,7 +42,7 @@ class Post {
 Comment.$inject = ['DS'];
 
 export default angular.module('app.post', [])
-    .run(function (Post) {})
+    .run(Post => {})
     .service('Post', Post)
     .name;
 

@@ -30,6 +30,6 @@ class Comment {
 Comment.$inject = ['DS'];
 
 export default angular.module('app.comment.model', [])
-    .run(function (Comment) {})
+    .run(Comment => {})
     .service('Comment', Comment)
     .name;
