@@ -8,7 +8,7 @@
 'use strict';
 
 import angular   from 'angular';
-import config    from './app.config'
+import config    from './config/app.config'
 import dashboard from './modules/dashboard/index';
 
 /**
