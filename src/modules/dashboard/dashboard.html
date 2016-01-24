@@ -1,17 +1,14 @@
 <div flex layout="column">
 
-  <!-- Container #1 (in wireframe) -->
   <md-toolbar layout="row" class="md-whiteframe-z2">
-    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+    <md-button class="menu" hide-gt-sm ng-click="dashboard.toggleList()" aria-label="Show User List">
       <md-icon md-svg-icon="menu" ></md-icon>
     </md-button>
     <h1>Angular + Webpack + JSData + ES6 + Material Design</h1>
   </md-toolbar>
 
-  <!-- Container #2 (in wireframe) -->
   <div flex layout="row">
 
-      <!-- Container #3 (in wireframe) -->
       <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left" layout="column">
         <md-list layout="column">
           <md-list-item data-ng-repeat="user in dashboard.users">
@@ -24,9 +21,7 @@
           <md-progress-circular md-mode="indeterminate" md-diameter="96" data-ng-if="dashboard.users.length === 0"></md-progress-circular>
       </md-sidenav>
 
-
-      <!-- Container #4 (in wireframe) -->
-      <md-content layout="row" flex id="content">
+      <md-content flex id="content" data-ng-if="dashboard.selected">
         <md-icon md-svg-icon="{{ dashboard.selected.avatar }}" class="avatar"></md-icon>
         <h2>{{ dashboard.selected.name }}</h2>
         <p>{{ dashboard.selected.content }}</p>
