@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/samuelcastro/angular-webpack-jsdata-es6-boilerplate",
   "dependencies": {
-    "angular": "^1.4.5",
+    "angular": "^1.4.9",
+    "angular-animate": "^1.4.9",
+    "angular-aria": "^1.4.9",
+    "angular-material": "^1.0.2",
+    "angular-messages": "^1.4.9",
     "angular-ui-router": "^0.2.15",
     "bootstrap": "^3.3.4",
     "firebase": "^2.3.2",

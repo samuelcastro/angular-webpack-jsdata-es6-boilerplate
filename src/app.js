@@ -1,31 +1,28 @@
 /**
- * AngularJS boilerplate based on Webpack + ES6 + JSData + SASS
- * @description
+ * Starting app
+ * @description Configuring the JSData Adapter
  * @author Samuel Castro
  * @since 1/18/16
  */
 
 'use strict';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import angular from 'angular';
-import uirouter from 'angular-ui-router';
-import firebase from 'firebase';
-import jsData from 'js-data';
-import jsDataFirebase from 'js-data-firebase';
-import jsDataAngular from 'js-data-angular'
-
+import angular   from 'angular';
+import config    from './app.config'
 import dashboard from './modules/dashboard/index';
 
-import adapters from './app.adapters.config';
-import provider from './app.provider.config';
-import run from './app.run.config';
-import routing from './app.routing.config';
+/**
+ * Manually bootstrap the application when AngularJS and all modules has been loaded.
+ */
+angular
+    .element( document )
+    .ready( () => {
 
-angular.module('app', [uirouter, jsDataAngular, dashboard])
-    .provider('DSFirebaseAdapter', provider)
-    .config(adapters)
-    .config(routing)
-    .run(run);
+      let appName = 'app';
+      let body = document.getElementsByTagName("body")[0];
+      let app  = angular
+          .module( appName, [ config, dashboard ] ).name;
 
+      angular.bootstrap( body, [ app ], { strictDi: false })
+
+    });

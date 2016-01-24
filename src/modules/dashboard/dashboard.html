@@ -1,37 +1,38 @@
-<div class="jumbotron centered">
-  <h1>Dashboard</h1>
+<div flex layout="column">
 
-  <table class="table table-striped">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr data-ng-repeat="user in dashboard.users">
-      <th scope="row">{{ $index + 1 }}</th>
-      <td>{{ user.name }}</td>
-      <td>{{ user.last_name }}</td>
-      <td>{{ user.email }}</td>
-    </tr>
-    </tbody>
-  </table>
+  <!-- Container #1 (in wireframe) -->
+  <md-toolbar layout="row" class="md-whiteframe-z2">
+    <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+      <md-icon md-svg-icon="menu" ></md-icon>
+    </md-button>
+    <h1>Angular + Webpack + JSData + ES6 + Material Design</h1>
+  </md-toolbar>
 
-  <div class="sk-fading-circle" data-ng-if="dashboard.users.length === 0">
-    <div class="sk-circle1 sk-circle"></div>
-    <div class="sk-circle2 sk-circle"></div>
-    <div class="sk-circle3 sk-circle"></div>
-    <div class="sk-circle4 sk-circle"></div>
-    <div class="sk-circle5 sk-circle"></div>
-    <div class="sk-circle6 sk-circle"></div>
-    <div class="sk-circle7 sk-circle"></div>
-    <div class="sk-circle8 sk-circle"></div>
-    <div class="sk-circle9 sk-circle"></div>
-    <div class="sk-circle10 sk-circle"></div>
-    <div class="sk-circle11 sk-circle"></div>
-    <div class="sk-circle12 sk-circle"></div>
+  <!-- Container #2 (in wireframe) -->
+  <div flex layout="row">
+
+      <!-- Container #3 (in wireframe) -->
+      <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left" layout="column">
+        <md-list layout="column">
+          <md-list-item data-ng-repeat="user in dashboard.users">
+              <md-button data-ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
+                <md-icon md-svg-icon="svg-4" class="avatar"></md-icon>
+                {{ user.name }}
+              </md-button>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
+
+      <!-- Container #4 (in wireframe) -->
+      <md-content flex id="content">
+        <md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+        <h2>{{ul.selected.name}}</h2>
+        <p>{{ul.selected.content}}</p>
+
+        <md-button class="share" md-no-ink ng-click="ul.share($event)" aria-label="Share">
+          <md-icon md-svg-icon="share"></md-icon>
+        </md-button>
+      </md-content>
+
   </div>
 </div>

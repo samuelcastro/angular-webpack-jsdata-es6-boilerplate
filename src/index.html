@@ -1,11 +1,24 @@
 <!doctype html>
-<html ng-app="app" lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>German Words</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>AngularJS + Webpack + JSData + ES6 + SASS + Material Design</title>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
   <base href="/">
+
+  <style type="text/css">
+    /**
+     * Hide when Angular is not yet loaded and initialized
+     */
+    [ng-cloak] {
+      display: none;
+    }
+  </style>
+
 </head>
-<body>
+<body ng-cloak layout="column">
   <div class="container">
     <ui-view></ui-view>
   </div>
