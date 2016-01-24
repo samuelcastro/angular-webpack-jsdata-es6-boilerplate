@@ -16,7 +16,7 @@
         <md-list layout="column">
           <md-list-item data-ng-repeat="user in dashboard.users">
               <md-button data-ng-click="dashboard.selectUser(user)" ng-class="{'selected' : user === dashboard.selected }">
-                <md-icon md-svg-icon="svg-4" class="avatar"></md-icon>
+                <md-icon md-svg-icon="{{ user.avatar }}" class="avatar"></md-icon>
                 {{ user.name }}
               </md-button>
           </md-list-item>
@@ -26,12 +26,12 @@
 
 
       <!-- Container #4 (in wireframe) -->
-      <md-content flex id="content">
+      <md-content layout="row" flex id="content">
         <md-icon md-svg-icon="{{ dashboard.selected.avatar }}" class="avatar"></md-icon>
         <h2>{{ dashboard.selected.name }}</h2>
         <p>{{ dashboard.selected.content }}</p>
 
-        <md-button class="share" md-no-ink ng-click="ul.share($event)" aria-label="Share">
+        <md-button class="share" md-no-ink ng-click="dashboard.share($event)" aria-label="Share">
           <md-icon md-svg-icon="share"></md-icon>
         </md-button>
       </md-content>

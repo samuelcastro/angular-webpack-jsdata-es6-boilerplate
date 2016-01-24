@@ -1,14 +1,14 @@
 'use strict';
 
 class DashboardController {
-  constructor($scope, $mdSidenav, User) {
+  constructor($scope, $mdSidenav, $mdBottomSheet, User) {
     this.$scope = $scope;
     this.$mdSidenav = $mdSidenav;
+    this.$mdBottomSheet = $mdBottomSheet;
     this.User = User.getInstance();
     this.selected = null;
 
     this.findAll();
-
     this.User.bindAll({}, this.$scope, 'dashboard.users');
   }
 
@@ -19,7 +19,7 @@ class DashboardController {
   selectUser (user) {
     this.selected = user;
     this.toggleList();
-}
+  }
 
   /**
    * Hide or Show the 'left' sideNav area
@@ -28,22 +28,13 @@ class DashboardController {
     this.$mdSidenav('left').toggle();
   }
 
-  getTitle() {
-    return this.getTitle2();
-  }
-
-  getTitle2() {
-
-    return 'Users'
-  }
-
   addUser() {
     this.User.create(
         {
-          id: Math.floor((Math.random() * 1000) + 1),
           name: 'Samuel Castro',
-          last_name: 'Silva Test',
-          email: 'samuelcastrosilva@gmail.com'
+          email: 'samuelcastrosilva@gmail.com',
+          avatar: 'svg-1'
+
         }
     ).then(document => {
       alert(JSON.stringify(document));
@@ -58,20 +49,43 @@ class DashboardController {
     )
   }
 
-  getRandomWord() {
-    this.wordsSvc.getWords().then((res) => {
-      this.word = res.data;
-    });
-  }
+  /**
+   * Show the bottom sheet
+   */
+  share($event) {
+    var user = this.selected;
 
-  logout(event) {
-    event.preventDefault();
-    this.authSvc.logout();
-    this.isAuth = false;
-    this.user = null;
+    this.$mdBottomSheet.show({
+      parent: angular.element(document.getElementById('content')),
+      template: require('./actions.html'),
+      controller: [ '$mdBottomSheet', UserSheetController],
+      controllerAs: "vm",
+      bindToController : true,
+      targetEvent: $event
+    }).then(function(clickedItem) {
+      console.log( clickedItem.name + ' clicked!');
+    });
+
+    /**
+     * Bottom Sheet controller for the Avatar Actions
+     */
+    function UserSheetController( $mdBottomSheet ) {
+
+      this.user = user;
+      this.items = [
+        { name: 'Phone'       , icon: 'phone'       , icon_url: require('./assets/svg/phone.svg')},
+        { name: 'Twitter'     , icon: 'twitter'     , icon_url: require('./assets/svg/twitter.svg')},
+        { name: 'Google+'     , icon: 'google_plus' , icon_url: require('./assets/svg/google_plus.svg')},
+        { name: 'Hangout'     , icon: 'hangouts'    , icon_url: require('./assets/svg/hangouts.svg')}
+      ];
+      this.performAction = function(action) {
+        $mdBottomSheet.hide(action);
+      };
+
+    }
   }
 }
 
-DashboardController.$inject = ['$scope', '$mdSidenav', 'User'];
+DashboardController.$inject = ['$scope', '$mdSidenav', '$mdBottomSheet', 'User'];
 
 export default DashboardController
