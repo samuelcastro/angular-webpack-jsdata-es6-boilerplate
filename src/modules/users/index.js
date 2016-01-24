@@ -9,9 +9,9 @@ import routing from './user.routes';
 import userController from './user.controller';
 import userModel from './user.model';
 
-const URL_AVATAR_ICONS = './assets/svg/avatars.svg';
-const URL_ICON_MENU    = './assets/svg/menu.svg';
-const URL_ICON_SHARE   = './assets/svg/share.svg';
+const URL_AVATAR_ICONS = require('./assets/svg/avatars.svg');
+const URL_ICON_MENU    = require('./assets/svg/menu.svg');
+const URL_ICON_SHARE   = require('./assets/svg/share.svg');
 
 export default angular.module('app.user', [uirouter, userModel])
   .config(routing)

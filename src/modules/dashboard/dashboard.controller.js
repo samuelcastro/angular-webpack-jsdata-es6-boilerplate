@@ -1,13 +1,31 @@
 'use strict';
 
 class DashboardController {
-  constructor($scope, User) {
+  constructor($scope, $mdSidenav, User) {
     this.$scope = $scope;
+    this.$mdSidenav = $mdSidenav;
     this.User = User.getInstance();
+    this.selected = null;
 
     this.findAll();
 
     this.User.bindAll({}, this.$scope, 'dashboard.users');
+  }
+
+  /**
+   * Select the current avatars
+   * @param menuId
+   */
+  selectUser (user) {
+    this.selected = user;
+    this.toggleList();
+}
+
+  /**
+   * Hide or Show the 'left' sideNav area
+   */
+  toggleList() {
+    this.$mdSidenav('left').toggle();
   }
 
   getTitle() {
@@ -35,7 +53,7 @@ class DashboardController {
   findAll() {
     this.User.findAll().then(
         users => {
-
+          this.selected = users[0];
         }
     )
   }
@@ -54,6 +72,6 @@ class DashboardController {
   }
 }
 
-DashboardController.$inject = ['$scope', 'User'];
+DashboardController.$inject = ['$scope', '$mdSidenav', 'User'];
 
 export default DashboardController
