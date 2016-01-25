@@ -73,10 +73,8 @@ class DashboardController {
 
       this.user = user;
       this.items = [
-        { name: 'Phone'       , icon: 'phone'       , icon_url: require('./assets/svg/phone.svg')},
-        { name: 'Twitter'     , icon: 'twitter'     , icon_url: require('./assets/svg/twitter.svg')},
-        { name: 'Google+'     , icon: 'google_plus' , icon_url: require('./assets/svg/google_plus.svg')},
-        { name: 'Hangout'     , icon: 'hangouts'    , icon_url: require('./assets/svg/hangouts.svg')}
+        { name: 'Edit'     , icon: 'edit'       , icon_url: require('./assets/svg/phone.svg')},
+        { name: 'Remove'   , icon: 'remove' , icon_url: require('./assets/svg/google_plus.svg')},
       ];
       this.performAction = function(action) {
         $mdBottomSheet.hide(action);
