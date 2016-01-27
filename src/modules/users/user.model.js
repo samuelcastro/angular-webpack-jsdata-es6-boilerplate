@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * User class
+ * @description Building the User model class
+ * @author Samuel Castro
+ * @since 1/18/16
+ */
+
 import angular from 'angular';
 
 class User {
@@ -11,6 +18,10 @@ class User {
     this.instance = null;
   }
 
+  /**
+   * Getting a singleton instance of Users
+   * @returns {*}
+   */
   getInstance() {
     if(this.instance && this.instance.class === 'User') {
       return this.instance;

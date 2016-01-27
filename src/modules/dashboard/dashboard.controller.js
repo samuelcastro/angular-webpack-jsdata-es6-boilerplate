@@ -1,10 +1,11 @@
 'use strict';
 
 class DashboardController {
-  constructor($scope, $mdSidenav, $mdBottomSheet, User) {
+  constructor($scope, $mdSidenav, $mdBottomSheet, $mdDialog, User) {
     this.$scope = $scope;
     this.$mdSidenav = $mdSidenav;
     this.$mdBottomSheet = $mdBottomSheet;
+    this.$mdDialog = $mdDialog;
     this.User = User.getInstance();
     this.selected = null;
 
@@ -46,7 +47,7 @@ class DashboardController {
         users => {
           this.selected = users[0];
         }
-    )
+    );
   }
 
   /**
@@ -57,7 +58,7 @@ class DashboardController {
 
     this.$mdBottomSheet.show({
       parent: angular.element(document.getElementById('content')),
-      template: require('./actions.html'),
+      template: require('./components/actions.tmpl.html'),
       controller: [ '$mdBottomSheet', UserSheetController],
       controllerAs: "vm",
       bindToController : true,
@@ -70,7 +71,6 @@ class DashboardController {
      * Bottom Sheet controller for the Avatar Actions
      */
     function UserSheetController( $mdBottomSheet ) {
-
       this.user = user;
       this.items = [
         { name: 'Edit'     , icon: 'edit'       , icon_url: require('./assets/svg/phone.svg')},
@@ -79,11 +79,44 @@ class DashboardController {
       this.performAction = function(action) {
         $mdBottomSheet.hide(action);
       };
-
     }
   }
+
+  showTabDialog(ev) {
+    this.$mdDialog.show({
+          controller: ['$mdDialog', DialogController],
+          controllerAs: "vm",
+          template: require('./components/tabDialog.tmpl.html'),
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true
+        })
+        .then(function(answer) {
+          //$scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          //$scope.status = 'You cancelled the dialog.';
+        });
+
+    /**
+     * Dialog controller
+     * @param $scope
+     * @param $mdDialog
+     * @constructor
+     */
+    function DialogController($scope, $mdDialog) {
+      this.hide = function() {
+        $mdDialog.hide();
+      };
+      this.cancel = function() {
+        $mdDialog.cancel();
+      };
+      this.answer = function(answer) {
+        $mdDialog.hide(answer);
+      };
+    }
+  };
 }
 
-DashboardController.$inject = ['$scope', '$mdSidenav', '$mdBottomSheet', 'User'];
+DashboardController.$inject = ['$scope', '$mdSidenav', '$mdBottomSheet', '$mdDialog', 'User'];
 
 export default DashboardController

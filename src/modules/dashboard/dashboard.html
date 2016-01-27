@@ -1,10 +1,13 @@
 <div flex layout="column">
 
   <md-toolbar layout="row" class="md-whiteframe-z2">
-    <md-button class="menu" hide-gt-sm ng-click="dashboard.toggleList()" aria-label="Show User List">
+    <md-button class="menu" hide-gt-sm data-ng-click="dashboard.toggleList()" aria-label="Show User List">
       <md-icon md-svg-icon="menu" ></md-icon>
     </md-button>
     <h1>Angular + Webpack + JSData + ES6 + Material Design</h1>
+      <md-button class="share" md-no-ink data-ng-click="dashboard.showTabDialog($event)" aria-label="Share">
+          <md-icon md-svg-icon="user_add"></md-icon>
+      </md-button>
   </md-toolbar>
 
   <div flex layout="row">
@@ -12,7 +15,7 @@
       <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left" layout="column">
         <md-list layout="column">
           <md-list-item data-ng-repeat="user in dashboard.users">
-              <md-button data-ng-click="dashboard.selectUser(user)" ng-class="{'selected' : user === dashboard.selected }">
+              <md-button data-ng-click="dashboard.selectUser(user)" data-ng-class="{'selected' : user === dashboard.selected }">
                 <md-icon md-svg-icon="{{ user.avatar }}" class="avatar"></md-icon>
                 {{ user.name }}
               </md-button>
