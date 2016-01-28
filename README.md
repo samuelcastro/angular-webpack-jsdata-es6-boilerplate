@@ -21,11 +21,11 @@ An AngularJS boilerplate based on Webpack + ES6 + JSData + SASS + Material Desig
 
 ## Build
 
-    1. Run `$ npm run build`
+    Run `$ npm run build`
 
 ## Contributions
 
-    1. Send me a Pull Request and I'll analyzing your changes.
+    Send me a Pull Request and I'll analyzing your changes.
 
 ## Any problems?
 Let me know at samuelcastrosilva@gmail.com
