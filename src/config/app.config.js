@@ -1,6 +1,6 @@
 /**
  * Starting app
- * @description Configuring the JSData Adapter
+ * @description Configuring all necessary dependencies
  * @author Samuel Castro
  * @since 1/18/16
  */
