@@ -278,6 +278,11 @@ md-list md-list-item button.md-button:not(.selected):not([disabled]) {
     animation-delay: -0.1s;
 }
 
+.user-form {
+    width: 500px;
+    padding: 15px;
+}
+
 @-webkit-keyframes sk-circleFadeDelay {
     0%, 39%, 100% { opacity: 0; }
     40% { opacity: 1; }

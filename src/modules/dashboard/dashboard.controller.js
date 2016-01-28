@@ -73,7 +73,7 @@ class DashboardController {
     function UserSheetController( $mdBottomSheet ) {
       this.user = user;
       this.items = [
-        { name: 'Edit'     , icon: 'edit'       , icon_url: require('./assets/svg/phone.svg')},
+        { name: 'Edit'     , icon: 'edit'   , icon_url: require('./assets/svg/phone.svg')},
         { name: 'Remove'   , icon: 'remove' , icon_url: require('./assets/svg/google_plus.svg')},
       ];
       this.performAction = function(action) {
@@ -84,10 +84,14 @@ class DashboardController {
 
   showTabDialog(ev) {
     this.$mdDialog.show({
-          controller: ['$mdDialog', DialogController],
+          controller: DialogController,
           controllerAs: "vm",
+          locals: {
+            User: this.User
+          },
           template: require('./components/tabDialog.tmpl.html'),
           parent: angular.element(document.body),
+          bindToController : true,
           targetEvent: ev,
           clickOutsideToClose:true
         })
@@ -103,15 +107,38 @@ class DashboardController {
      * @param $mdDialog
      * @constructor
      */
-    function DialogController($scope, $mdDialog) {
-      this.hide = function() {
+    function DialogController($mdDialog, User) {
+      this.user = {};
+      this.label = 'Save';
+
+      this.User = User;
+
+      this.hide = () => {
         $mdDialog.hide();
       };
-      this.cancel = function() {
+
+      this.cancel = () => {
         $mdDialog.cancel();
       };
-      this.answer = function(answer) {
-        $mdDialog.hide(answer);
+
+      this.save = () => {
+        console.log(this.form);
+        if(this.form.$valid) {
+          this.form.$setSubmitted();
+          this.label = 'Saving...';
+          User.create(
+              {
+                name: this.user.name,
+                email: this.user.email,
+                description: this.user.description,
+                avatar: 'svg-' + Math.floor((Math.random() * 16) + 1)
+              }
+          ).then(document => {
+            if(document) {
+              this.hide();
+            }
+          });
+        }
       };
     }
   };

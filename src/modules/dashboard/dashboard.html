@@ -27,7 +27,9 @@
       <md-content flex id="content" data-ng-if="dashboard.selected">
         <md-icon md-svg-icon="{{ dashboard.selected.avatar }}" class="avatar"></md-icon>
         <h2>{{ dashboard.selected.name }}</h2>
-        <p>{{ dashboard.selected.content }}</p>
+        <p>{{ dashboard.selected.description }}</p>
+
+          <h4><a href="" data-ng-click="dashboard.addNewPost();">Add new post</a></h4>
 
         <md-button class="share" md-no-ink ng-click="dashboard.share($event)" aria-label="Share">
           <md-icon md-svg-icon="action"></md-icon>
