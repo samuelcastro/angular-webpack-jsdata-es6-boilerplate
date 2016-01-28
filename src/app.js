@@ -1,6 +1,6 @@
+
 /**
- * Starting app
- * @description Configuring the JSData Adapter
+ * AngularJS boilerplate based on Webpack + ES6 + JSData + SASS + Material Design
  * @author Samuel Castro
  * @since 1/18/16
  */

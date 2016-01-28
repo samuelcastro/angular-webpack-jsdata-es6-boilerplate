@@ -1,6 +1,6 @@
 /**
- * AngularJS boilerplate based on Webpack + ES6 + JSData + SASS
- * @description
+ * Starting app
+ * @description Configuring the JSData Adapter
  * @author Samuel Castro
  * @since 1/18/16
  */
