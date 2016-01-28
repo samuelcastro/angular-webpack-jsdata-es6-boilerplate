@@ -8,16 +8,15 @@ An AngularJS boilerplate based on Webpack + ES6 + JSData + SASS + Material Desig
 ![Home](http://samuelcastro.me/edit-user.png "Edit User")
 
 ## Features
-
-    - [Webpack](https://webpack.github.io/).
-    - [ES6/7](http://www.ecma-international.org/publications/standards/Ecma-262.htm) with [babel.js](https://babeljs.io/).
-    - JSData as a model layer.
-    - Source maps included in all builds.
-    - Development server with live reload.
-    - Production builds with cache busting and asset minification.
-    - Testing environment using karma to run tests and jasmine as the framework.
-    - Code coverage when tests are run.
-    - No gulp and no grunt, just npm run-scripts.
+- [Webpack](https://webpack.github.io/).
+- [ES6/7](http://www.ecma-international.org/publications/standards/Ecma-262.htm) with [babel.js](https://babeljs.io/).
+- JSData as a model layer.
+- Source maps included in all builds.
+- Development server with live reload.
+- Production builds with cache busting and asset minification.
+- Testing environment using karma to run tests and jasmine as the framework.
+- Code coverage when tests are run.
+- No gulp and no grunt, just npm run-scripts.
 
 ## Getting Start
 
