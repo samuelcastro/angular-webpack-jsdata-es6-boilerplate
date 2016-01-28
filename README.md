@@ -11,6 +11,7 @@ An AngularJS boilerplate based on Webpack + ES6 + JSData + SASS + Material Desig
 - [Webpack](https://webpack.github.io/).
 - [ES6/7](http://www.ecma-international.org/publications/standards/Ecma-262.htm) with [babel.js](https://babeljs.io/).
 - [JSData](http://www.js-data.io/) as a model layer.
+- [SASS](http://sass-lang.com/).
 - [Material Design](https://material.angularjs.org/latest/).
 - Source maps included in all builds.
 - Development server with live reload.
