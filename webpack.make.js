@@ -137,20 +137,21 @@ module.exports = function makeWebpackConfig (options) {
   // Reference: https://github.com/postcss/postcss-loader
   // Postprocess your css with PostCSS plugins
   var cssLoader = {
-    test: /\.css$/,
+    test: /\.scss$/,
     // Reference: https://github.com/webpack/extract-text-webpack-plugin
     // Extract css files in production builds
     //
     // Reference: https://github.com/webpack/style-loader
     // Use style-loader in development for hot-loading
-    loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+    //loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss', 'scss?sourceMap')
+    loaders: ['style', 'css?sourceMap!postcss', 'sass?sourceMap']
   };
 
   // Skip loading css in test mode
   if (TEST) {
     // Reference: https://github.com/webpack/null-loader
     // Return an empty module
-    cssLoader.loader = 'null'
+    cssLoader.loaders = 'null'
   }
 
   // Add cssLoader to the loader list
@@ -221,11 +222,7 @@ module.exports = function makeWebpackConfig (options) {
       modules: false,
       cached: false,
       colors: true,
-      chunk: false,
-      historyApiFallback: true,
-      hot: true,
-      inline: true,
-      progress: true
+      chunk: false
     }
   };
 

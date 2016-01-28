@@ -3,7 +3,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import './style.css';
+import './user.scss';
 
 import routing from './user.routes';
 import userController from './user.controller';

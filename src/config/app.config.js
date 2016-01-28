@@ -6,7 +6,7 @@
  */
 
 'use strict';
-import 'angular-material/angular-material.css';
+import 'angular-material/angular-material.scss';
 
 import angular         from 'angular';
 import angularMaterial from 'angular-material'

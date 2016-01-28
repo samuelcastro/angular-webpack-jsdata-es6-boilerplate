@@ -3,7 +3,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import './style.css';
+import './dashboard.scss';
 
 import routing from './dashboard.routes';
 import DashboardController from './dashboard.controller';

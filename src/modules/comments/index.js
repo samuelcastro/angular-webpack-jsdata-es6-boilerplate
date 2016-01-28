@@ -3,8 +3,6 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import './style.css';
-
 import routing from './comment.routes';
 import CommentController from './comment.controller';
 import commentModel from './comment.model';
